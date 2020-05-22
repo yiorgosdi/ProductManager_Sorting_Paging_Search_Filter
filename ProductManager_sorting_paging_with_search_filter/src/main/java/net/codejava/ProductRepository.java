@@ -9,14 +9,9 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 // public interface ProductRepository extends JpaRepository<Product, Long> {
 
 public interface ProductRepository extends PagingAndSortingRepository<Product, Long> {
-	   
-	   @Query("SELECT p FROM Product p WHERE " 
-			   + "CONCAT(p.id, ' ', p.name, ' ' , p.brand, ' ' , p.madein, ' ' , p.price)"
-			   + "LIKE %?1%")
-	   public Page<Product> findAll(String keyword, Pageable pageable); 
 
-	   
+	@Query("SELECT p FROM Product p WHERE " + "CONCAT(p.id, ' ', p.name, ' ' , p.brand, ' ' , p.madein, ' ' , p.price)"
+			+ "LIKE %?1%")
+	public Page<Product> findAll(String keyword, Pageable pageable);
+
 }
-
-	   
- 
